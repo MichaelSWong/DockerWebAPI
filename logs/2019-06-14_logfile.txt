@@ -17,3 +17,7 @@ Login failed for user 'MYFNB\wongm'.
 2019-06-14 14:53:23.6920 ERROR Owner with id: 261e1685-cf26-494c-b17c-3546e65f5625, hasn't been found in db.
 2019-06-14 15:06:06.8937 INFO Returned owner with id: 261e1685-cf26-494c-b17c-3546e65f5620
 2019-06-14 15:06:15.3631 INFO Returned owner with details for id: 261e1685-cf26-494c-b17c-3546e65f5620
+2019-06-14 15:16:12.5251 INFO Returned all owners from database.
+2019-06-14 15:18:01.8864 INFO Returned all owners from database.
+2019-06-14 15:45:33.3854 INFO Returned all owners from database.
+2019-06-14 15:47:23.4419 INFO Returned all owners from database.
