@@ -2,3 +2,7 @@
 2019-06-14 13:20:54.0042 DEBUG Here is debug message from our values controller.
 2019-06-14 13:20:54.0158 WARN Here is warn message from our values controller.
 2019-06-14 13:20:54.0158 ERROR Here is error message from our values controller.
+2019-06-14 14:23:15.7072 INFO Here is info message from our values controller.
+2019-06-14 14:23:20.1191 DEBUG Here is debug message from our values controller.
+2019-06-14 14:23:22.8020 WARN Here is warn message from our values controller.
+2019-06-14 14:23:26.5596 ERROR Here is error message from our values controller.

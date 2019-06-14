@@ -34,6 +34,10 @@ namespace AccountOwnerServer
             services.ConfigureIIsIntegration();
 
             services.ConfigureLoggerService();
+
+            services.ConfigureSqlContext(Configuration);
+
+            services.ConfigureRepositoryWrapper();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

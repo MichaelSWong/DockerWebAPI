@@ -11,10 +11,12 @@ namespace AccountOwnerServer.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private IRepositoryWrapper _repoWrapper;
         private ILoggerManager _logger;
 
-        public ValuesController(ILoggerManager logger)
+        public ValuesController(ILoggerManager logger, IRepositoryWrapper repoWrapper)
         {
+            _repoWrapper = repoWrapper;
             _logger = logger;
         }
 
@@ -22,6 +24,9 @@ namespace AccountOwnerServer.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            var domesticAccounts = _repoWrapper.Account.FindByCondition(x => x.AccountType.Equals("Domestic"));
+            var owners = _repoWrapper.Owner.FindAll();
+
             _logger.LogInfo("Here is info message from our values controller.");
             _logger.LogDebug("Here is debug message from our values controller.");
             _logger.LogWarn("Here is warn message from our values controller.");

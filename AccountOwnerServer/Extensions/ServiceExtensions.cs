@@ -6,6 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Entities;
+using Repository;
 
 namespace AccountOwnerServer.Extensions
 {
@@ -31,12 +35,24 @@ namespace AccountOwnerServer.Extensions
 
             });
         }
-        
+
         public static void ConfigureLoggerService(this IServiceCollection services)
         {
             services.AddSingleton<ILoggerManager, LoggerManager>();
         }
+
+        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration config)
+        {
+            var connectionString = config["sqlconnection:connectionString"];
+            services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionString));
+        }
+
+
+        public static void ConfigureRepositoryWrapper(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+        }
     }
 
-    
+
 }
