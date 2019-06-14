@@ -3,58 +3,65 @@ using Entities;
 using Entities.ExtendedModels;
 using Entities.Extensions;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class OwnerRepository: RepositoryBase<Owner>, IOwnerRepository
+    public class OwnerRepository : RepositoryBase<Owner>, IOwnerRepository
     {
         public OwnerRepository(RepositoryContext repositoryContext)
-            :base(repositoryContext)
+            : base(repositoryContext)
         {
-
         }
 
-        public IEnumerable<Owner> GetAllOwners()
+        public async Task<IEnumerable<Owner>> GetAllOwnersAsync()
         {
-            return FindAll()
-                .OrderBy(ow => ow.Name)
-                .ToList();
+            return await FindAll()
+               .OrderBy(x => x.Name)
+               .ToListAsync();
         }
 
-        public Owner GetOwnerById(Guid ownerId)
+        public async Task<Owner> GetOwnerByIdAsync(Guid ownerId)
         {
-            return FindByCondition(owner => owner.Id.Equals(ownerId))
+            return await FindByCondition(o => o.Id.Equals(ownerId))
                 .DefaultIfEmpty(new Owner())
-                .FirstOrDefault();
+                .SingleAsync();
         }
 
-        public OwnerExtended GetOwnerWithDetails(Guid ownerId)
+        public async Task<OwnerExtended> GetOwnerWithDetailsAsync(Guid ownerId)
         {
-            return new OwnerExtended(GetOwnerById(ownerId))
-            {
-                Accounts = RepositoryContext.Accounts
-                .Where(a => a.OwnerId == ownerId)
-            };
+            return await FindByCondition(o => o.Id.Equals(ownerId))
+                .Select(owner => new OwnerExtended(owner)
+                {
+                    Accounts = RepositoryContext.Accounts
+                    .Where(a => a.OwnerId.Equals(owner.Id))
+                    .ToList()
+                })
+                .SingleOrDefaultAsync();
         }
 
-        public void CreateOwner(Owner owner)
+        public async Task CreateOwnerAsync(Owner owner)
         {
             owner.Id = Guid.NewGuid();
             Create(owner);
+            await SaveAsync();
         }
 
-        public void UpdateOwner(Owner dbOwner, Owner owner)
+        public async Task UpdateOwnerAsync(Owner dbOwner, Owner owner)
         {
             dbOwner.Map(owner);
             Update(dbOwner);
+            await SaveAsync();
         }
 
-        public void DeleteOwner(Owner owner)
+        public async Task DeleteOwnerAsync(Owner owner)
         {
             Delete(owner);
+            await SaveAsync();
         }
     }
 }
