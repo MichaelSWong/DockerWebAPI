@@ -6,3 +6,14 @@
 2019-06-14 14:23:20.1191 DEBUG Here is debug message from our values controller.
 2019-06-14 14:23:22.8020 WARN Here is warn message from our values controller.
 2019-06-14 14:23:26.5596 ERROR Here is error message from our values controller.
+2019-06-14 14:37:45.3959 ERROR Something went wrong inside GetAllOwners action: Cannot open database "mydb" requested by the login. The login failed.
+Login failed for user 'MYFNB\wongm'.
+2019-06-14 14:38:54.3353 ERROR Something went wrong inside GetAllOwners action: Cannot open database "mydb" requested by the login. The login failed.
+Login failed for user 'MYFNB\wongm'.
+2019-06-14 14:40:35.6739 INFO Returned all owners from database.
+2019-06-14 14:50:25.3201 INFO Returned owner with id: 261e1685-cf26-494c-b17c-3546e65f5620
+2019-06-14 14:50:43.7199 ERROR Owner with id: 261e1685-cf26-494c-b17c-3546e65f5625, hasn't been found in db.
+2019-06-14 14:53:17.5924 INFO Returned owner with id: 261e1685-cf26-494c-b17c-3546e65f5620
+2019-06-14 14:53:23.6920 ERROR Owner with id: 261e1685-cf26-494c-b17c-3546e65f5625, hasn't been found in db.
+2019-06-14 15:06:06.8937 INFO Returned owner with id: 261e1685-cf26-494c-b17c-3546e65f5620
+2019-06-14 15:06:15.3631 INFO Returned owner with details for id: 261e1685-cf26-494c-b17c-3546e65f5620
