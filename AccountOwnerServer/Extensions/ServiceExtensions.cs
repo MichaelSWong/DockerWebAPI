@@ -43,8 +43,10 @@ namespace AccountOwnerServer.Extensions
 
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration config)
         {
-            var connectionString = config["sqlconnection:connectionString"];
-            services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionString));
+            //var connectionString = config["sqlconnection:connectionString"];
+            //services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionString));
+            // in memory database
+            services.AddDbContext<RepositoryContext>(o => o.UseInMemoryDatabase("accountowner"));
         }
 
 
