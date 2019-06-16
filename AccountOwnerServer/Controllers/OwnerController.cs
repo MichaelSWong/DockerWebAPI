@@ -39,7 +39,7 @@ namespace AccountOwnerServer.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "OwnerById")]
         public async Task<IActionResult> GetOwnerById(Guid id)
         {
             try
@@ -64,7 +64,7 @@ namespace AccountOwnerServer.Controllers
             }
         }
 
-        [HttpGet("{id}", Name = "OwnerById")]
+        [HttpGet("{id}/account")]
         public async Task<IActionResult> GetOwnerWithDetails(Guid id)
         {
             try
